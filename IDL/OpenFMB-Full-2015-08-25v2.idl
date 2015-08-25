@@ -1,0 +1,1039 @@
+
+
+struct ActivePower{
+        UnitMultiplier multiplier; //@Optional 
+
+        UnitSymbol unit; //@Optional 
+
+        float value; //@Optional 
+
+};
+
+
+
+
+struct BasicIntervalSchedule{
+        dateTime startTime; //@Optional 
+
+        UnitMultiplier value1Multiplier; //@Optional 
+
+        UnitSymbol value1Unit; //@Optional 
+
+        UnitMultiplier value2Multiplier; //@Optional 
+
+        UnitSymbol value2Unit; //@Optional 
+
+};
+
+
+
+
+struct BatteryControlModule{
+        string messageID; 
+        dateTime timestamp; 
+        BatterySystem BatterySystem; 
+        BatterySystemControl BatterySystemControl; 
+};
+
+
+
+
+struct BatteryEventModule{
+        string messageID; 
+        dateTime timestamp; 
+        BatteryStatus BatteryStatus; 
+        BatterySystem BatterySystem; 
+};
+
+
+
+
+struct BatteryReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        BatteryStatus BatteryStatus; //@Optional 
+
+        BatterySystem BatterySystem; 
+        Reading Readings; 
+};
+
+
+
+
+struct BatteryStatus{
+        boolean isCharging; //@Optional 
+
+        boolean isConnected; //@Optional 
+
+        string mode; //@Optional 
+
+        float stateOfCharge; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string value; //@Optional 
+
+        HexBinary16 qualityFlag; //@Optional 
+
+};
+
+
+
+
+struct BatterySystem{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+};
+
+
+
+
+struct BatterySystemControl{
+        boolean isIslanded; //@Optional 
+
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; 
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct Container{
+        string messageID; 
+        dateTime timestamp; 
+};
+
+
+
+
+struct Curve{
+        uuidType mRID; //@Optional 
+
+        CurveStyle curveStyle; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        UnitMultiplier xMultiplier; //@Optional 
+
+        UnitSymbol xUnit; //@Optional 
+
+        UnitMultiplier y1Multiplier; //@Optional 
+
+        UnitSymbol y1Unit; //@Optional 
+
+        UnitMultiplier y2Multiplier; //@Optional 
+
+        UnitSymbol y2Unit; //@Optional 
+
+        UnitMultiplier y3Multiplier; //@Optional 
+
+        UnitSymbol y3Unit; //@Optional 
+
+};
+
+
+
+
+struct CurveData{
+        float xvalue; //@Optional 
+
+        Curve Curve; 
+        float y1value; //@Optional 
+
+        float y2value; //@Optional 
+
+        float y3value; //@Optional 
+
+};
+
+
+
+
+enum CurveStyle{
+    constantYValue,
+    straightLineYValues
+};
+
+
+
+struct DateTimeInterval{
+        dateTime end; //@Optional 
+
+        dateTime start; //@Optional 
+
+};
+
+
+
+
+struct EndDeviceControl{
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; //@Optional 
+
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct EndDeviceControlType{
+        string action; //@Optional 
+
+        string type; //@Optional 
+
+};
+
+
+
+
+struct EnergyConsumer{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        string operatingLimit; //@Optional 
+
+};
+
+
+
+
+enum EnergyProductType{
+    DYN,
+    FIRM,
+    NFRM,
+    WHL
+};
+
+
+
+struct Event{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string type; //@Optional 
+
+        string value; //@Optional 
+
+};
+
+
+
+
+enum ExecutionType{
+    DA,
+    HASP,
+    RTD,
+    RTPD
+};
+
+
+
+struct FlowDirectionKind{
+         forward; 
+         lagging; 
+         leading; 
+         net; 
+         none; 
+         q1minusQ4; 
+         q1plusQ2; 
+         q1plusQ3; 
+         q1plusQ4; 
+         q2minusQ3; 
+         q2plusQ3; 
+         q2plusQ4; 
+         q3minusQ2; 
+         q3plusQ4; 
+         quadrant1; 
+         quadrant2; 
+         quadrant3; 
+         quadrant4; 
+         reverse; 
+         total; 
+         totalByPhase; 
+};
+
+
+
+
+struct ForecastSchedule{
+        dateTime startTime; //@Optional 
+
+        UnitMultiplier value1Multiplier; //@Optional 
+
+        UnitSymbol value1Unit; //@Optional 
+
+        UnitMultiplier value2Multiplier; //@Optional 
+
+        UnitSymbol value2Unit; //@Optional 
+
+        string version; //@Optional 
+
+        dateTime versionDateTime; //@Optional 
+
+        IrregularTimePoint IrregularTimePoint; //@Optional 
+
+};
+
+
+
+
+struct GeneratingUnit{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        ActivePower maxOperatingP; //@Optional 
+
+};
+
+
+
+
+struct GenerationControl{
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; //@Optional 
+
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct GenerationControlModule{
+        string messageID; 
+        dateTime timestamp; 
+        GeneratingUnit GeneratingUnit; 
+        GenerationControl GenerationControl; 
+};
+
+
+
+
+struct GenerationEventModule{
+        string messageID; 
+        dateTime timestamp; 
+        GeneratingUnit GeneratingUnit; 
+        GenerationStatus GenerationStatus; 
+};
+
+
+
+
+struct GenerationForecastModule{
+        string messageID; 
+        dateTime timestamp; 
+        ForecastSchedule ForecastSchedule; 
+        GeneratingUnit GeneratingUnit; 
+};
+
+
+
+
+struct GenerationReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        GeneratingUnit GeneratingUnit; 
+        GenerationStatus GenerationStatus; //@Optional 
+
+        Reading Reading; 
+};
+
+
+
+
+struct GenerationStatus{
+        boolean isAutoOn; //@Optional 
+
+        boolean isConnected; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string value; //@Optional 
+
+        HexBinary16 qualityFlag; //@Optional 
+
+};
+
+
+typedef hexBinary HexBinary16; 
+
+
+struct IdentifiedObject{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+};
+
+
+
+
+struct InterchangeSchedule{
+        uuidType mRID; //@Optional 
+
+        CurveStyle curveStyle; //@Optional 
+
+        string description; //@Optional 
+
+        InterTieDirection directionType; //@Optional 
+
+        MarketProductType energyType; //@Optional 
+
+        long intervalLength; //@Optional 
+
+        string name; //@Optional 
+
+        EnergyProductType scheduleType; //@Optional 
+
+        UnitMultiplier xMultiplier; //@Optional 
+
+        UnitSymbol xUnit; //@Optional 
+
+        UnitMultiplier y1Multiplier; //@Optional 
+
+        UnitSymbol y1Unit; //@Optional 
+
+        UnitMultiplier y2Multiplier; //@Optional 
+
+        UnitSymbol y2Unit; //@Optional 
+
+        UnitMultiplier y3Multiplier; //@Optional 
+
+        UnitSymbol y3Unit; //@Optional 
+
+        OptimizedMicroGridMarket OptimizedMicroGridMarket; //@Optional 
+
+};
+
+
+
+
+struct InterchangeScheduleModule{
+        string messageID; 
+        dateTime timestamp; 
+        InterchangeSchedule InterchangeSchedule; 
+        PowerSystemResource PowerSystemResource; 
+};
+
+
+
+
+enum InterTieDirection{
+    E,
+    I,
+    NETZERO
+};
+
+
+
+struct IrregularTimePoint{
+        float value1; //@Optional 
+
+        float value2; //@Optional 
+
+};
+
+
+
+
+struct LoadControl{
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; //@Optional 
+
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct LoadControlModule{
+        string messageID; 
+        dateTime timestamp; 
+        EnergyConsumer EnergyConsumer; 
+        LoadControl LoadControl; 
+};
+
+
+
+
+struct LoadForecastModule{
+        string messageID; 
+        dateTime timestamp; 
+        EnergyConsumer EnergyConsumer; 
+        ForecastSchedule ForecastSchedule; 
+};
+
+
+
+
+struct LoadReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        EnergyConsumer EnergyConsumer; 
+        Reading Reading; 
+};
+
+
+
+
+struct Market{
+        uuidType mRID; //@Optional 
+
+        dateTime actualEnd; //@Optional 
+
+        dateTime actualStart; //@Optional 
+
+        string description; //@Optional 
+
+        boolean dst; //@Optional 
+
+        dateTime end; //@Optional 
+
+        string localTimeZone; //@Optional 
+
+        string name; //@Optional 
+
+        dateTime start; //@Optional 
+
+        string status; //@Optional 
+
+        float timeIntervalLength; //@Optional 
+
+        dateTime tradingDay; //@Optional 
+
+        string tradingPeriod; //@Optional 
+
+         MarketFactors; //@Optional 
+
+         MarketRun; //@Optional 
+
+};
+
+
+
+
+struct MarketFactors{
+        dateTime intervalEndTime; //@Optional 
+
+        dateTime intervalStartTime; //@Optional 
+
+};
+
+
+
+
+enum MarketProductType{
+    EN,
+    LFU,
+    NR,
+    RC,
+    RD,
+    REG,
+    RU,
+    SR
+};
+
+
+
+struct MarketRun{
+        ExecutionType executionType; //@Optional 
+
+        dateTime marketEndTime; //@Optional 
+
+        string marketID; //@Optional 
+
+        string marketRunID; //@Optional 
+
+        dateTime marketStartTime; //@Optional 
+
+        MarketType marketType; //@Optional 
+
+};
+
+
+
+
+enum MarketType{
+    DAM,
+    HAM,
+    RTM,
+    RUC
+};
+
+
+
+struct Meter{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        PowerSystemResource PowerSystemResource; //@Optional 
+
+};
+
+
+
+
+struct OptimizedMicroGridMarket{
+        uuidType mRID; //@Optional 
+
+        dateTime actualEnd; //@Optional 
+
+        dateTime actualStart; //@Optional 
+
+        string description; //@Optional 
+
+        boolean dst; //@Optional 
+
+        dateTime end; //@Optional 
+
+        string localTimeZone; //@Optional 
+
+        string name; //@Optional 
+
+        dateTime start; //@Optional 
+
+        string status; //@Optional 
+
+        float timeIntervalLength; //@Optional 
+
+        dateTime tradingDay; //@Optional 
+
+        string tradingPeriod; //@Optional 
+
+        MarketFactors MarketFactors; //@Optional 
+
+        MarketRun MarketRun; //@Optional 
+
+};
+
+
+
+
+struct PhaseCode{
+         A; 
+         AB; 
+         ABC; 
+         ABCN; 
+         ABN; 
+         AC; 
+         ACN; 
+         AN; 
+         B; 
+         BC; 
+         BCN; 
+         BN; 
+         C; 
+         CN; 
+         N; 
+         s1; 
+         s12; 
+         s12N; 
+         s1N; 
+         s2; 
+         s2N; 
+};
+
+
+
+
+struct PowerSystemResource{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+};
+
+
+
+
+struct Reading{
+        string source; //@Optional 
+
+        float value; 
+        HexBinary16 qualityFlag; //@Optional 
+
+        ReadingType ReadingType; 
+        DateTimeInterval timePeriod; //@Optional 
+
+};
+
+
+
+
+struct ReadingType{
+        UnitMultiplier multiplier; //@Optional 
+
+        string name; //@Optional 
+
+        UnitSymbol unit; //@Optional 
+
+        FlowDirectionKind flowDirection; //@Optional 
+
+        PhaseCode phases; //@Optional 
+
+};
+
+
+
+
+struct Recloser{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+        boolean normalOpen; //@Optional 
+
+};
+
+
+
+
+struct RecloserControl{
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; //@Optional 
+
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct RecloserControlModule{
+        string messageID; 
+        dateTime timestamp; 
+        Recloser Recloser; 
+        RecloserControl RecloserControl; 
+};
+
+
+
+
+struct RecloserEventModule{
+        string messageID; 
+        dateTime timestamp; 
+        Recloser Recloser; 
+        RecloserStatus RecloserStatus; 
+};
+
+
+
+
+struct RecloserReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        Reading Readings; 
+};
+
+
+
+
+struct RecloserStatus{
+        boolean isBlocked; //@Optional 
+
+        SwitchStatusType switchStatus; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string value; //@Optional 
+
+        HexBinary16 qualityFlag; //@Optional 
+
+};
+
+
+
+
+struct ResourceReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        Meter Meter; 
+        Reading Readings; 
+        Recloser Recloser; 
+        RecloserStatus RecloserStatus; 
+};
+
+
+
+
+struct SecurityEvent{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string log; //@Optional 
+
+        string name; //@Optional 
+
+        string severity; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string type; //@Optional 
+
+        string value; //@Optional 
+
+};
+
+
+
+
+struct SecurityEventModule{
+        string messageID; 
+        dateTime timestamp; 
+        SecurityEvent SecurityEvent; 
+};
+
+
+
+
+struct SetPoint{
+        string controlType; //@Optional 
+
+        UnitMultiplier multiplier; //@Optional 
+
+        UnitSymbol unit; //@Optional 
+
+        float value; //@Optional 
+
+};
+
+
+
+
+struct SolarCapability{
+        float ahrRtg; //@Optional 
+
+        string qualityFlag; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        float voltage; //@Optional 
+
+        float wRtgMaxVal; //@Optional 
+
+        float wRtgMinVal; //@Optional 
+
+};
+
+
+
+
+struct SolarCapabilityModule{
+        string messageID; 
+        dateTime timestamp; 
+        SolarCapability SolarCapability; 
+        SolarInverter SolarInverter; 
+};
+
+
+
+
+struct SolarControl{
+        boolean isIslanded; //@Optional 
+
+        string issueID; //@Optional 
+
+        string name; //@Optional 
+
+        EndDeviceControlType EndDeviceControlType; //@Optional 
+
+        DateTimeInterval scheduledInterval; //@Optional 
+
+        SetPoint SetPoints; //@Optional 
+
+};
+
+
+
+
+struct SolarControlModule{
+        string messageID; 
+        dateTime timestamp; 
+        SolarControl SolarControl; 
+        SolarInverter SolarInverter; 
+};
+
+
+
+
+struct SolarEventModule{
+        string messageID; 
+        dateTime timestamp; 
+        SolarInverter SolarInverter; 
+        SolarInverterStatus SolarInverterStatus; 
+};
+
+
+
+
+struct SolarForecastModule{
+        string messageID; 
+        dateTime timestamp; 
+        ForecastSchedule ForecastSchedule; 
+        SolarInverter SolarInverter; 
+};
+
+
+
+
+struct SolarInverter{
+        uuidType mRID; //@Optional 
+
+        string description; //@Optional 
+
+        string name; //@Optional 
+
+};
+
+
+
+
+struct SolarInverterStatus{
+        boolean isConnected; //@Optional 
+
+        dateTime timestamp; //@Optional 
+
+        string value; //@Optional 
+
+        HexBinary16 qualityFlag; //@Optional 
+
+};
+
+
+
+
+struct SolarReadingModule{
+        string messageID; 
+        dateTime timestamp; 
+        Reading Readings; 
+        SolarInverter SolarInverter; 
+        SolarInverterStatus SolarInverterStatus; //@Optional 
+
+};
+
+
+
+
+struct Status{
+        dateTime timestamp; //@Optional 
+
+        string value; //@Optional 
+
+        HexBinary16 qualityFlag; //@Optional 
+
+};
+
+
+
+
+enum SwitchStatusType{
+    Closed,
+    Open
+};
+
+
+
+enum UnitMultiplier{
+    c,
+    d,
+    G,
+    k,
+    M,
+    m,
+    micro,
+    n,
+    none,
+    p,
+    T
+};
+
+
+
+enum UnitSymbol{
+    A,
+    deg,
+    degC,
+    F,
+    g,
+    h,
+    H,
+    Hz,
+    J,
+    m,
+    m2,
+    m3,
+    min,
+    N,
+    none,
+    ohm,
+    Pa,
+    rad,
+    S,
+    s,
+    V,
+    VA,
+    VAh,
+    VAr,
+    VArh,
+    W,
+    Wh,
+    wPerVA
+};
+
+typedef string uuidType; 
