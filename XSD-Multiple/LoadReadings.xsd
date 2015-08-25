@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/LoadReadings" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/LoadReadings" xmlns:m="http://openfmb.org/xsd/2015/08/LoadReadings" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="LoadReadingModule" type="LoadReadingModule"/>
+	<xs:complexType name="LoadReadingModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="EnergyConsumer" type="c:EnergyConsumer" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Reading" type="c:Reading" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/GenerationReadings" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/GenerationReadings" xmlns:m="http://openfmb.org/xsd/2015/08/GenerationReadings" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="GenerationReadingModule" type="GenerationReadingModule"/>
+	<xs:complexType name="GenerationReadingModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="GeneratingUnit" type="c:GeneratingUnit" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="GenerationStatus" type="c:GenerationStatus" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="Reading" type="c:Reading" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

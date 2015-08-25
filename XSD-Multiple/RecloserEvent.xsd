@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/RecloserEvent" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/RecloserEvent" xmlns:m="http://openfmb.org/xsd/2015/08/RecloserEvent" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation>RecloserEventModule message published whenever a recloser status is changed. </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="RecloserEventModule" type="RecloserEventModule"/>
+	<xs:complexType name="RecloserEventModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="Recloser" type="c:Recloser" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="RecloserStatus" type="c:RecloserStatus" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/InterchangeSchedule" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/InterchangeSchedule" xmlns:m="http://openfmb.org/xsd/2015/08/InterchangeSchedule" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="InterchangeScheduleModule" type="InterchangeScheduleModule"/>
+	<xs:complexType name="InterchangeScheduleModule">
+		<xs:annotation>
+			<xs:documentation>Set of values obtained from the meter.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="InterchangeSchedule" type="c:InterchangeSchedule" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="PowerSystemResource" type="c:PowerSystemResource" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

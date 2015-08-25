@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/RecloserControl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/RecloserControl" xmlns:m="http://openfmb.org/xsd/2015/08/RecloserControl" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation>RecloserControlModule message published from a source to a target recloser for control purpose. </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="RecloserControlModule" type="RecloserControlModule"/>
+	<xs:complexType name="RecloserControlModule">
+		<xs:annotation>
+			<xs:documentation>Instructs an end device (or an end device group) to perform a specified action.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="RecloserControl" type="c:RecloserControl" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Recloser" type="c:Recloser" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,1378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/Common" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/Common" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:element name="GenerationStatus" type="GenerationStatus"/>
+	<xs:complexType name="GenerationStatus">
+		<xs:complexContent>
+			<xs:extension base="Status">
+				<xs:sequence>
+					<xs:element name="isAutoOn" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="isConnected" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="RecloserControl" type="RecloserControl"/>
+	<xs:complexType name="RecloserControl">
+		<xs:complexContent>
+			<xs:extension base="EndDeviceControl">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ActivePower" type="ActivePower"/>
+	<xs:complexType name="ActivePower">
+		<xs:sequence>
+			<xs:element name="multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="unit" type="UnitSymbol" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value" type="xs:float" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EndDeviceControlType" type="EndDeviceControlType"/>
+	<xs:complexType name="EndDeviceControlType">
+		<xs:annotation>
+			<xs:documentation>Detailed description for a control produced by an end device. Values in attributes allow for creation of recommended codes to be used for identifying end device controls as follows: &lt;type&gt;.&lt;domain&gt;.&lt;subDomain&gt;.&lt;eventOrAction&gt;.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="action" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The most specific part of this control type. It is mainly in the form of a verb that gives action to the control that just occurred.
+
+Used for Sv/Sc mode control.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="UnitMultiplier">
+		<xs:annotation>
+			<xs:documentation>The unit multipliers defined for the CIM.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="T">
+				<xs:annotation>
+					<xs:documentation>Tera 10**12.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="p">
+				<xs:annotation>
+					<xs:documentation>Pico 10**-12.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="none">
+				<xs:annotation>
+					<xs:documentation>No multiplier or equivalently multiply by 1.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="n">
+				<xs:annotation>
+					<xs:documentation>Nano 10**-9.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="micro">
+				<xs:annotation>
+					<xs:documentation>Micro 10**-6.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="m">
+				<xs:annotation>
+					<xs:documentation>Milli 10**-3.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="M">
+				<xs:annotation>
+					<xs:documentation>Mega 10**6.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="k">
+				<xs:annotation>
+					<xs:documentation>Kilo 10**3.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="G">
+				<xs:annotation>
+					<xs:documentation>Giga 10**9.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="d">
+				<xs:annotation>
+					<xs:documentation>Deci 10**-1.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="c">
+				<xs:annotation>
+					<xs:documentation>Centi 10**-2.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitSymbol">
+		<xs:annotation>
+			<xs:documentation>The units defined for usage in the CIM.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A">
+				<xs:annotation>
+					<xs:documentation>Current in ampere.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="deg">
+				<xs:annotation>
+					<xs:documentation>Plane angle in degrees.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="degC">
+				<xs:annotation>
+					<xs:documentation>Relative temperature in degrees Celsius. In the SI unit system the symbol is ºC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using ºC is the special character º is difficult to manage in software.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="F">
+				<xs:annotation>
+					<xs:documentation>Capacitance in farad.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="g">
+				<xs:annotation>
+					<xs:documentation>Mass in gram.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="h">
+				<xs:annotation>
+					<xs:documentation>Time in hours.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="H">
+				<xs:annotation>
+					<xs:documentation>Inductance in henry.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Hz">
+				<xs:annotation>
+					<xs:documentation>Frequency in hertz.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="J">
+				<xs:annotation>
+					<xs:documentation>Energy in joule.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="m">
+				<xs:annotation>
+					<xs:documentation>Length in meter.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="m2">
+				<xs:annotation>
+					<xs:documentation>Area in square meters.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="m3">
+				<xs:annotation>
+					<xs:documentation>Volume in cubic meters.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="min">
+				<xs:annotation>
+					<xs:documentation>Time in minutes.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="N">
+				<xs:annotation>
+					<xs:documentation>Force in newton.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="none">
+				<xs:annotation>
+					<xs:documentation>Dimension less quantity, e.g. count, per unit, etc.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ohm">
+				<xs:annotation>
+					<xs:documentation>Resistance in ohm.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Pa">
+				<xs:annotation>
+					<xs:documentation>Pressure in pascal (n/m2).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="rad">
+				<xs:annotation>
+					<xs:documentation>Plane angle in radians.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation>Conductance in siemens.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="s">
+				<xs:annotation>
+					<xs:documentation>Time in seconds.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="V">
+				<xs:annotation>
+					<xs:documentation>Voltage in volt.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VA">
+				<xs:annotation>
+					<xs:documentation>Apparent power in volt ampere.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VAh">
+				<xs:annotation>
+					<xs:documentation>Apparent energy in volt ampere hours.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VAr">
+				<xs:annotation>
+					<xs:documentation>Reactive power in volt ampere reactive.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VArh">
+				<xs:annotation>
+					<xs:documentation>Reactive energy in volt ampere reactive hours.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="W">
+				<xs:annotation>
+					<xs:documentation>Active power in watt.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Wh">
+				<xs:annotation>
+					<xs:documentation>Real energy in what hours.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="wPerVA">
+				<xs:annotation>
+					<xs:documentation>Power factor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Container" type="Container"/>
+	<xs:complexType name="Container">
+		<xs:sequence>
+			<xs:element name="messageID" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="timestamp" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Meter" type="Meter"/>
+	<xs:complexType name="Meter">
+		<xs:annotation>
+			<xs:documentation>Physical asset that performs the metering role of the usage point. Used for measuring consumption and detection of events.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="PowerSystemResource" type="PowerSystemResource" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SolarInverter" type="SolarInverter"/>
+	<xs:complexType name="SolarInverter">
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SetPoint" type="SetPoint"/>
+	<xs:complexType name="SetPoint">
+		<xs:annotation>
+			<xs:documentation>An analog control that issue a set point value.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="controlType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="unit" type="UnitSymbol" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value" type="xs:float" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EndDeviceControl" type="EndDeviceControl"/>
+	<xs:complexType name="EndDeviceControl">
+		<xs:annotation>
+			<xs:documentation>Instructs an end device (or an end device group) to perform a specified action.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="issueID" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of the business entity originating an end device control.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EndDeviceControlType" type="EndDeviceControlType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="scheduledInterval" type="DateTimeInterval" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date and time interval the control has been scheduled to execute within. If no end time, leave the optional field out.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SetPoints" type="SetPoint" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BatterySystem" type="BatterySystem"/>
+	<xs:complexType name="BatterySystem">
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="IdentifiedObject" type="IdentifiedObject"/>
+	<xs:complexType name="IdentifiedObject">
+		<xs:annotation>
+			<xs:documentation>This is a root class to provide common identification for all classes needing identification and naming attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="mRID" type="uuidType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Master resource identifier issued by a model authority. The mRID must semantically be a UUID as specified in RFC 4122. The mRID is globally unique.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name is any free human readable and possibly non unique text naming the object.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReadingType" type="ReadingType"/>
+	<xs:complexType name="ReadingType">
+		<xs:annotation>
+			<xs:documentation>Description for a type of a reading value. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="flowDirection" type="FlowDirectionKind" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="phases" type="PhaseCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="unit" type="UnitSymbol" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Reading" type="Reading"/>
+	<xs:complexType name="Reading">
+		<xs:annotation>
+			<xs:documentation>Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="qualityFlag" type="HexBinary16" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>qualityFlags
+List of codes indicating the quality of the reading, using specification:
+
+Bit 0 - valid: data that has gone through all required validation checks and either passed them all or has been verified 
+Bit 1 - manually edited: Replaced or approved by a human
+Bit 2 - estimated using reference day: data value was replaced by a machine computed value based on analysis of historical data using the same type of measurement.
+Bit 3 - estimated using linear interpolation: data value was computed using linear interpolation based on the readings before and after it
+Bit 4 - questionable: data that has failed one or more checks
+Bit 5 - derived: data that has been calculated (using logic or mathematical operations), not necessarily measured directly 
+Bit 6 - projected (forecast): data that has been calculated as a projection or forecast of future readings</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="timePeriod" type="DateTimeInterval" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value" type="xs:float" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ReadingType" type="ReadingType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EnergyConsumer" type="EnergyConsumer"/>
+	<xs:complexType name="EnergyConsumer">
+		<xs:annotation>
+			<xs:documentation>Generic user of energy - a  point of consumption on the power system model.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="operatingLimit" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="GeneratingUnit" type="GeneratingUnit"/>
+	<xs:complexType name="GeneratingUnit">
+		<xs:annotation>
+			<xs:documentation>A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="maxOperatingP" type="ActivePower" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>This is the maximum operating active power limit the dispatcher can enter for this unit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Status" type="Status"/>
+	<xs:complexType name="Status">
+		<xs:annotation>
+			<xs:documentation>Current status information relevant to an entity.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="qualityFlag" type="HexBinary16" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>qualityFlags
+List of codes indicating the quality of the reading, using specification:
+
+Bit 0 - valid: data that has gone through all required validation checks and either passed them all or has been verified 
+Bit 1 - manually edited: Replaced or approved by a human
+Bit 2 - estimated using reference day: data value was replaced by a machine computed value based on analysis of historical data using the same type of measurement.
+Bit 3 - estimated using linear interpolation: data value was computed using linear interpolation based on the readings before and after it
+Bit 4 - questionable: data that has failed one or more checks
+Bit 5 - derived: data that has been calculated (using logic or mathematical operations), not necessarily measured directly 
+Bit 6 - projected (forecast): data that has been calculated as a projection or forecast of future readings</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timestamp" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FlowDirectionKind" type="FlowDirectionKind"/>
+	<xs:complexType name="FlowDirectionKind">
+		<xs:sequence>
+			<xs:element name="q2plusQ4" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Quadrants 2 and 4</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lagging" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Typically used to describe that a power factor is lagging the reference value. 
+Note 1: When used to describe VA, “lagging” describes a form of measurement where reactive power is considered in all four quadrants, but real power is considered only in quadrants I and IV.
+Note 2: When used to describe power factor, the term “Lagging” implies that the PF is negative. The term “lagging” in this case takes the place of the negative sign. If a signed PF value is to be passed by the data producer, then the direction of flow enumeration zero (none) should be used in order to avoid the possibility of creating an expression that employs a double negative. The data consumer should be able to tell from the sign of the data if the PF is leading or lagging. This principle is analogous to the concept that “Reverse” energy is an implied negative value, and to publish a negative reverse value would be ambiguous.
+Note 3: Lagging power factors typically indicate inductive loading.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="leading" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Typically used to describe that a power factor is leading the reference value.
+Note: Leading power factors typically indicate capacitive loading.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="net" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>|Forward| - |Reverse|, See 61968-2.
+
+Note: In some systems, the value passed as a “net” value could become negative. In other systems the value passed as a “net” value is always a positive number, and rolls-over and rolls-under as needed. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="none" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Not Applicable (N/A)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q1minusQ4" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q1 minus Q4</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q1plusQ2" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Reactive positive quadrants. (The term “lagging” is preferred.)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q1plusQ3" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Quadrants 1 and 3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q1plusQ4" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Quadrants 1 and 4 usually represent forward active energy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forward" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>"Delivered," or "Imported" as defined 61968-2.
+
+Forward Active Energy is a positive kWh value as one would naturally expect to find as energy is supplied by the utility and consumed at the service.
+
+Forward Reactive Energy is a positive VArh value as one would naturally expect to find in the presence of inductive loading.
+
+In polyphase metering, the forward energy register is incremented when the sum of the phase energies is greater than zero:
+
+&lt;img src="HTS_1.PNG" width="209" height="16" border="0" alt="graphic"/&gt;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q2plusQ3" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Quadrants 2 and 3 usually represent reverse active energy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalByPhase" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>In polyphase metering, the total by phase energy register is incremented when the sum of the absolute values of the phase energies is greater than zero:
+
+&lt;img src="HTS_1.PNG" width="234" height="16" border="0" alt="graphic"/&gt;
+
+In single phase metering, the formulas for “Total” and “Total by phase” collapse to the same expression. For communication purposes however, the “Total” enumeration should be used with single phase meter data.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q3minusQ2" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q3 minus Q2</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q3plusQ4" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Reactive negative quadrants. (The term “leading” is preferred.)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quadrant1" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q1 only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quadrant2" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q2 only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quadrant3" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q3 only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quadrant4" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q4 only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reverse" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Reverse Active Energy is equivalent to "Received," or "Exported" as defined in 61968-2.
+
+Reverse Active Energy is a positive kWh value as one would expect to find when energy is backfed by the service onto the utility network.
+
+Reverse Reactive Energy is a positive VArh value as one would expect to find in the presence of capacitive loading and a leading Power Factor.
+
+In polyphase metering, the reverse energy register is incremented when the sum of the phase energies is less than zero:
+
+&lt;img src="HTS_1.PNG" width="209" height="16" border="0" alt="graphic"/&gt;
+
+Note: The value passed as a reverse value is always a positive value. It is understood by the label “reverse” that it represents negative flow.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="total" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>|Forward| + |Reverse|, See 61968-2.
+The sum of the commodity in all quadrants Q1+Q2+Q3+Q4.
+
+In polyphase metering, the total energy register is incremented when the absolute value of the sum of the phase energies is greater than zero:
+
+&lt;img src="HTS_1.PNG" width="217" height="16" border="0" alt="graphic"/&gt;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="q2minusQ3" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Q2 minus Q3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PhaseCode" type="PhaseCode"/>
+	<xs:complexType name="PhaseCode">
+		<xs:annotation>
+			<xs:documentation>Enumeration of phase identifiers. Allows designation of phases for both transmission and distribution equipment, circuits and loads.
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases B and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AB" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A and B.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ABC" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A, B, and C.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ABCN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A, B, C, and N.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ABN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A, B, and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AC" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A and C.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ACN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A, C and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases A and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="B" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phase B.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="A" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phase A.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BCN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases B, C, and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s2N" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phase 2 and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="C" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phase C.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CN" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases C and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="N" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Neutral phase.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s1" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phase 1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s12" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phase 1 and 2.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s12N" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phases 1, 2, and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s1N" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phase 1 and neutral.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="s2" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Secondary phase 2.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BC" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Phases B and C.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Recloser" type="Recloser"/>
+	<xs:complexType name="Recloser">
+		<xs:annotation>
+			<xs:documentation>Pole-mounted fault interrupter with built-in phase and ground relays, current transformer (CT), and supplemental controls.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="normalOpen" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Event" type="Event"/>
+	<xs:complexType name="Event">
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="timestamp" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SecurityEvent" type="SecurityEvent"/>
+	<xs:complexType name="SecurityEvent">
+		<xs:complexContent>
+			<xs:extension base="Event">
+				<xs:sequence>
+					<xs:element name="log" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="severity" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="RecloserStatus" type="RecloserStatus"/>
+	<xs:complexType name="RecloserStatus">
+		<xs:complexContent>
+			<xs:extension base="Status">
+				<xs:sequence>
+					<xs:element name="isBlocked" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="switchStatus" type="SwitchStatusType" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="BatterySystemControl" type="BatterySystemControl"/>
+	<xs:complexType name="BatterySystemControl">
+		<xs:complexContent>
+			<xs:extension base="EndDeviceControl">
+				<xs:sequence>
+					<xs:element name="isIslanded" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="SwitchStatusType">
+		<xs:annotation>
+			<xs:documentation>Circuit Breaker Status (closed or open) of the circuit breaker.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Closed">
+				<xs:annotation>
+					<xs:documentation>Closed status.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Open">
+				<xs:annotation>
+					<xs:documentation>Open status.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="InterchangeSchedule" type="InterchangeSchedule"/>
+	<xs:complexType name="InterchangeSchedule">
+		<xs:annotation>
+			<xs:documentation>Interchange schedule class to hold information for interchange schedules such as import export type, energy type, and etc.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Curve">
+				<xs:sequence>
+					<xs:element name="directionType" type="InterTieDirection" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Import or export.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="energyType" type="MarketProductType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Energy type.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="intervalLength" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="scheduleType" type="EnergyProductType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Schedule type (e.g. firm, non-firm, dynamic. and etc.).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OptimizedMicroGridMarket" type="OptimizedMicroGridMarket" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="InterTieDirection">
+		<xs:annotation>
+			<xs:documentation>Direction of an intertie.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="E">
+				<xs:annotation>
+					<xs:documentation>Export.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="I">
+				<xs:annotation>
+					<xs:documentation>Import.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NETZERO">
+				<xs:annotation>
+					<xs:documentation>Net Zero.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EnergyProductType">
+		<xs:annotation>
+			<xs:documentation>Energy product type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FIRM">
+				<xs:annotation>
+					<xs:documentation>Firm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NFRM">
+				<xs:annotation>
+					<xs:documentation>Non Firm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DYN">
+				<xs:annotation>
+					<xs:documentation>Dynamic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WHL">
+				<xs:annotation>
+					<xs:documentation>Wheeling</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DateTimeInterval" type="DateTimeInterval"/>
+	<xs:complexType name="DateTimeInterval">
+		<xs:annotation>
+			<xs:documentation>Interval between two date and time points.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="end" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>End date and time of this interval.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="start" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Start date and time of this interval.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GenerationControl" type="GenerationControl"/>
+	<xs:complexType name="GenerationControl">
+		<xs:complexContent>
+			<xs:extension base="EndDeviceControl">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PowerSystemResource" type="PowerSystemResource"/>
+	<xs:complexType name="PowerSystemResource">
+		<xs:annotation>
+			<xs:documentation>A power system resource can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="uuidType">
+		<xs:annotation>
+			<xs:documentation>UUID as specified in RFC 4122
+
+UUID = time-low "-" time-mid "-" time-high-and-version "-" clock-seq-and-reserved clock-seq-low "-" node
+  time-low               	= 4hexOctet
+  time-mid               	= 2hexOctet
+  time-high-and-version  	= 2hexOctet
+  clock-seq-and-reserved 	= hexOctet
+  clock-seq-low          	= hexOctet
+  node                   	= 6hexOctet
+  hexOctet               	= hexDigit hexDigit
+  hexDigit = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9" / "a" / "b" / "c" / "d" / "e" / "f" / "A" / "B" / "C" / "D" / "E" / "F"
+
+The following is an example of the string representation of a UUID as a URN:
+   urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="BatteryStatus" type="BatteryStatus"/>
+	<xs:complexType name="BatteryStatus">
+		<xs:complexContent>
+			<xs:extension base="Status">
+				<xs:sequence>
+					<xs:element name="isCharging" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="isConnected" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="mode" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Sv or Sc model</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stateOfCharge" type="xs:float" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SolarInverterStatus" type="SolarInverterStatus"/>
+	<xs:complexType name="SolarInverterStatus">
+		<xs:complexContent>
+			<xs:extension base="Status">
+				<xs:sequence>
+					<xs:element name="isConnected" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="LoadControl" type="LoadControl"/>
+	<xs:complexType name="LoadControl">
+		<xs:complexContent>
+			<xs:extension base="EndDeviceControl">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SolarCapability" type="SolarCapability"/>
+	<xs:complexType name="SolarCapability">
+		<xs:sequence>
+			<xs:element name="ahrRtg" type="xs:float" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="timestamp" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="voltage" type="xs:float" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="wRtgMaxVal" type="xs:float" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="wRtgMinVal" type="xs:float" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="qualityFlag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BasicIntervalSchedule" type="BasicIntervalSchedule"/>
+	<xs:complexType name="BasicIntervalSchedule">
+		<xs:annotation>
+			<xs:documentation>Schedule of values at points in time.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The time for the first time point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value1Multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Multiplier for value1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value1Unit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Value1 units of measure.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value2Multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Multiplier for value2.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value2Unit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Value2 units of measure.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ForecastSchedule" type="ForecastSchedule"/>
+	<xs:complexType name="ForecastSchedule">
+		<xs:annotation>
+			<xs:documentation>The forecast schedule has time points where the time between them varies.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BasicIntervalSchedule">
+				<xs:sequence>
+					<xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="versionDateTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="IrregularTimePoint" type="IrregularTimePoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="IrregularTimePoint" type="IrregularTimePoint"/>
+	<xs:complexType name="IrregularTimePoint">
+		<xs:annotation>
+			<xs:documentation>TimePoints for a schedule where the time between the points varies.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="value1" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The first value at the time. The meaning of the value is defined by the derived type of the associated schedule.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value2" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The second value at the time. The meaning of the value is defined by the derived type of the associated schedule.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SolarControl" type="SolarControl"/>
+	<xs:complexType name="SolarControl">
+		<xs:complexContent>
+			<xs:extension base="EndDeviceControl">
+				<xs:sequence>
+					<xs:element name="isIslanded" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="HexBinary16">
+		<xs:annotation>
+			<xs:documentation>A 16-bit field encoded as a hex string (4 hex characters max). Where applicable, bit 0, or the least significant bit, goes on the right. Note that hexBinary requires pairs of hex characters, so an odd number of characters requires a leading "0". </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:hexBinary">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MarketProductType">
+		<xs:annotation>
+			<xs:documentation>For example:
+Energy, Reg Up, Reg Down, Spin Reserve, Nonspin Reserve, RUC, Load Folloing Up, and Load Following Down.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EN">
+				<xs:annotation>
+					<xs:documentation>energy type</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RU">
+				<xs:annotation>
+					<xs:documentation>regulation up</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RD">
+				<xs:annotation>
+					<xs:documentation>regulation down</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SR">
+				<xs:annotation>
+					<xs:documentation>spinning reserve</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NR">
+				<xs:annotation>
+					<xs:documentation>non spinning reserve</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RC">
+				<xs:annotation>
+					<xs:documentation>Residual Unit Commitment</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LFU">
+				<xs:annotation>
+					<xs:documentation>Load following up</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="REG">
+				<xs:annotation>
+					<xs:documentation>Regulation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Curve" type="Curve"/>
+	<xs:complexType name="Curve">
+		<xs:annotation>
+			<xs:documentation>A multi-purpose curve or functional relationship between an independent variable (X-axis) and dependent (Y-axis) variables. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="curveStyle" type="CurveStyle" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>The style or shape of the curve.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="xMultiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Multiplier for X-axis.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="xUnit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>The X-axis units of measure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y1Multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Multiplier for Y1-axis.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y1Unit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>The Y1-axis units of measure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y2Multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Multiplier for Y2-axis.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y2Unit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>The Y2-axis units of measure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y3Multiplier" type="UnitMultiplier" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Multiplier for Y3-axis.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="y3Unit" type="UnitSymbol" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>The Y3-axis units of measure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CurveData" type="CurveData" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CurveData" type="CurveData"/>
+	<xs:complexType name="CurveData">
+		<xs:annotation>
+			<xs:documentation>Multi-purpose data points for defining a curve.  The use of this generic class is discouraged if a more specific class  can be used to specify the x and y axis values along with their specific data types.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="xvalue" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The data value of the X-axis variable,  depending on the X-axis units.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="y1value" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The data value of the  first Y-axis variable, depending on the Y-axis units.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="y2value" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The data value of the second Y-axis variable (if present), depending on the Y-axis units.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="y3value" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The data value of the third Y-axis variable (if present), depending on the Y-axis units.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OptimizedMicroGridMarket" type="OptimizedMicroGridMarket"/>
+	<xs:complexType name="OptimizedMicroGridMarket">
+		<xs:complexContent>
+			<xs:extension base="Market">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Market" type="Market"/>
+	<xs:complexType name="Market">
+		<xs:annotation>
+			<xs:documentation>Market (e.g. Day Ahead Market, RealTime Market) with a description of the the Market operation control parameters.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentifiedObject">
+				<xs:sequence>
+					<xs:element name="actualEnd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market ending time - actual market end</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="actualStart" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market starting time - actual market start</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="dst" type="xs:boolean" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>True if daylight savings time (DST) is in effect.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="end" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market end time.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="localTimeZone" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Local time zone.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="start" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market start time.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market Status 
+'OPEN', 'CLOSED', 'CLEARED', 'BLOCKED'</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timeIntervalLength" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Trading time interval length.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tradingDay" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Market trading date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tradingPeriod" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Trading period that describes the market, possibilities could be for an Energy Market:
+Day
+Hour
+
+For a CRR Market:
+Year
+Month
+Season</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MarketFactors" type="MarketFactors" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="MarketRun" type="MarketRun" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MarketFactors" type="MarketFactors"/>
+	<xs:complexType name="MarketFactors">
+		<xs:annotation>
+			<xs:documentation>Aggregation of market information relative for a specific time interval.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="intervalEndTime" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The end of the time interval for which requirement is defined.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intervalStartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The start of the time interval for which requirement is defined.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MarketRun" type="MarketRun"/>
+	<xs:complexType name="MarketRun">
+		<xs:annotation>
+			<xs:documentation>This class represent an actual instance of a planned market. For example, a Day Ahead market opens with the Bid Submission, ends with the closing of the Bid Submission. The market run represent the whole process. MarketRuns can be defined for markets such as Day Ahead Market, Real Time Market, Hour Ahead Market, Week Ahead Market,...</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="executionType" type="ExecutionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="marketEndTime" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The end time defined as the end of the market, market end time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketID" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An identification that defines the attributes of the Market. In todays terms: Market Type: DA, RTM, Trade Date:  1/25/04, Trade Hour: 1-25</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketRunID" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A unique identifier that differentiates the different runs of the same Market ID.   More specifically, if the market is re-opened and re-closed and rerun completely, the first set of results and the second set of results produced will have the same Market ID but will have different Market Run IDs since the multiple run is for the same market.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketStartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The start time defined as the beginning of the market, market start time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="marketType" type="MarketType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The market type, Day Ahead Market or Real Time Market.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MarketType">
+		<xs:annotation>
+			<xs:documentation>Maket type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DAM">
+				<xs:annotation>
+					<xs:documentation>Day ahead market.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RTM">
+				<xs:annotation>
+					<xs:documentation>Real time market.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HAM">
+				<xs:annotation>
+					<xs:documentation>Hour Ahead Market.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RUC">
+				<xs:annotation>
+					<xs:documentation>Residual Unit Commitment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExecutionType">
+		<xs:annotation>
+			<xs:documentation>Execution types of Market Runs</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DA">
+				<xs:annotation>
+					<xs:documentation>Day Ahead</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HASP">
+				<xs:annotation>
+					<xs:documentation>Real TIme Hour Ahead Execution</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RTPD">
+				<xs:annotation>
+					<xs:documentation>Real Time Pre-dispatch</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RTD">
+				<xs:annotation>
+					<xs:documentation>Real Time Dispatch</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CurveStyle">
+		<xs:annotation>
+			<xs:documentation>Style or shape of curve.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="constantYValue">
+				<xs:annotation>
+					<xs:documentation>The Y-axis values are assumed constant until the next curve point and prior to the first curve point.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="straightLineYValues">
+				<xs:annotation>
+					<xs:documentation>The Y-axis values are assumed to be a straight line between values.  Also known as linear interpolation.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

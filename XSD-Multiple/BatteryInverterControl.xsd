@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/BatteryInverterControl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/BatteryInverterControl" xmlns:m="http://openfmb.org/xsd/2015/08/BatteryInverterControl" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="BatteryControlModule" type="BatteryControlModule"/>
+	<xs:complexType name="BatteryControlModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="BatterySystem" type="c:BatterySystem" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="BatterySystemControl" type="c:BatterySystemControl" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

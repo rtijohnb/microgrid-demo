@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/BatteryReadings" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/BatteryReadings" xmlns:m="http://openfmb.org/xsd/2015/08/BatteryReadings" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="BatteryReadingModule" type="BatteryReadingModule"/>
+	<xs:complexType name="BatteryReadingModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="BatteryStatus" type="c:BatteryStatus" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="BatterySystem" type="c:BatterySystem" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Readings" type="c:Reading" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

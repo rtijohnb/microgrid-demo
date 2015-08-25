@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://openfmb.org/xsd/2015/08/GenerationEvent" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openfmb.org/xsd/2015/08/GenerationEvent" xmlns:m="http://openfmb.org/xsd/2015/08/GenerationEvent" xmlns:c="http://openfmb.org/xsd/2015/08/Common" elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="http://openfmb.org/xsd/2015/08/Common" schemaLocation="./Common/Common.xsd"/>
+	<xs:element name="GenerationEventModule" type="GenerationEventModule"/>
+	<xs:complexType name="GenerationEventModule">
+		<xs:complexContent>
+			<xs:extension base="c:Container">
+				<xs:sequence>
+					<xs:element name="GeneratingUnit" type="c:GeneratingUnit" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="GenerationStatus" type="c:GenerationStatus" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
